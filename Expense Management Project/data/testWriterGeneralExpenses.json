@@ -1,0 +1,18 @@
+{"Expenses": [
+    {
+        "score": 5,
+        "amount": 10.98,
+        "dollarScoreRatio": 2.196,
+        "monthYear": "03/2023",
+        "name": "Chocolate",
+        "category": "Food"
+    },
+    {
+        "score": 0,
+        "amount": 103,
+        "dollarScoreRatio": 0,
+        "monthYear": "06/2023",
+        "name": "Book<Orlando>",
+        "category": "Study"
+    }
+]}

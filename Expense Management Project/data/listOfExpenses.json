@@ -1,0 +1,26 @@
+{"Expenses": [
+    {
+        "score": 0,
+        "amount": 134,
+        "dollarScoreRatio": 0,
+        "monthYear": "08/2023",
+        "name": "Book",
+        "category": "Study"
+    },
+    {
+        "score": 0,
+        "amount": 36.47,
+        "dollarScoreRatio": 0,
+        "monthYear": "09/2023",
+        "name": "Chair",
+        "category": "Furniture"
+    },
+    {
+        "score": 0,
+        "amount": 120,
+        "dollarScoreRatio": 0,
+        "monthYear": "09/2023",
+        "name": "Vitamin",
+        "category": "Food"
+    }
+]}
