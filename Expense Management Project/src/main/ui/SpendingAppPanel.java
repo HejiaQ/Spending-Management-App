@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 //represent the panel that have menu and other information for the user interaction
 public class SpendingAppPanel extends JPanel {
-    private static final String JSON_SAVED = "./data/listOfExpenses.json";
+    private static final String JSON_SAVED = "Expense Management Project/data/listOfExpenses.json";
     private static final int HEIGHT = 500;
     private static final int WIDTH = 450;
     private static final int bu_x = 80;
@@ -71,7 +71,7 @@ public class SpendingAppPanel extends JPanel {
         //code influenced by traffic light
         //https://github.students.cs.ubc.ca/CPSC210/C3-LectureLabStarter/blob/main/src/main/gui/TrafficLightGUI.java
 
-        imageMenu = new ImageIcon("data/imageMenu.jpg");
+        imageMenu = new ImageIcon("Expense Management Project/data/imageMenu.jpg");
         imageLabel = new JLabel(imageMenu);
 
 
