@@ -212,6 +212,9 @@ public class SpendingAppPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String userIn = JOptionPane.showInputDialog(null,
                         "please enter year and month that you want to calculate the total amount for.");
+                if(userIn == null) {
+                    return;
+                }
                 if (checkValidTime(userIn)) {
                     JOptionPane.showMessageDialog(null, "Invalid input, please try again.");
                 } else {
