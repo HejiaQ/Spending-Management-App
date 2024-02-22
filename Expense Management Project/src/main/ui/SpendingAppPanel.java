@@ -141,7 +141,9 @@ public class SpendingAppPanel extends JPanel {
         JButton removeButton = new JButton("Remove");
         JButton viewDetailButton = new JButton("View Detail");
         JButton calculateButton = new JButton("Calculate Monthly Total");
-        setBoundsDisplayPage(backButton, removeButton, calculateButton, viewDetailButton);
+        JButton rateButton = new JButton("Rate Expense");
+        JButton avgButton = new JButton("Average rate");
+        setBoundsDisplayPage(backButton, removeButton, calculateButton, viewDetailButton, rateButton, avgButton);
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 appearMenu();
@@ -149,27 +151,35 @@ public class SpendingAppPanel extends JPanel {
                 hideButtons(removeButton);
                 hideButtons(calculateButton);
                 hideButtons(viewDetailButton);
+                hideButtons(rateButton);
+                hideButtons(avgButton);
                 scrollList.setVisible(false);
             }
         });
         removeButton(removeButton);
         calculateButton(calculateButton);
         viewDetail(viewDetailButton);
+        rateButton(rateButton);
+        avgButton(avgButton);
 
         this.add(removeButton);
         this.add(calculateButton);
         this.add(backButton);
         this.add(viewDetailButton);
+        this.add(rateButton);
+        this.add(avgButton);
         repaint();
     }
 
     //EFFECTS: set the buttons position
     private static void setBoundsDisplayPage(JButton backButton, JButton removeButton, JButton calculateButton,
-                                             JButton viewButton) {
+                                             JButton viewButton, JButton rateButton, JButton avgButton) {
         backButton.setBounds(110, 400, 100, bu_h);
         removeButton.setBounds(10, 400, 100, bu_h);
         calculateButton.setBounds(210, 400, 200, bu_h);
         viewButton.setBounds(10, 430, 100, bu_h);
+        rateButton.setBounds(110, 430, 150, bu_h);
+        avgButton.setBounds(260, 430, 150, bu_h);
     }
 
     //EFFECTS: add functionality to button to allow displaying detail of the selected item in the list of expenses
@@ -251,6 +261,63 @@ public class SpendingAppPanel extends JPanel {
 
     }
 
+    //EFFECTS: set rating to each of the spending
+    private void rateButton(JButton rateButton) {
+        rateButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (listToDisplay.isSelectionEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please select an expense to rate.");
+                } else {
+                    String input = JOptionPane.showInputDialog(null,
+                            "Please enter your rating for this expense from 1 to 5");
+                    if(input == null) {
+                        return;
+                    }
+                    try {
+                        int i = Integer.parseInt(input);
+                        if(i < 1 || i > 5) {
+                            JOptionPane.showMessageDialog(null, "input out of range, " +
+                                    "please try again.");
+                        } else {
+                            int index = listToDisplay.getSelectedIndex();
+                            listOfExpense.getListOfExpense().get(index).setScore(i);
+                            listOfExpense.getListOfExpense().get(index).calculateRatio();
+                            JOptionPane.showMessageDialog(null, "Rating is saved.");
+
+                        }
+
+                    }catch (Exception intException){
+                        JOptionPane.showMessageDialog(null, "Invalid input, please try again.");
+                    }
+
+                }
+
+            }
+        });
+
+    }
+
+
+    private void avgButton(JButton avgButton) {
+        avgButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String userIn = JOptionPane.showInputDialog(null,
+                        "please enter Categories that you want to calculate the rating for. " +
+                                "Category must be one of: Study, Food, Entertainment, Furniture, " +
+                                "Luxury, Clothes, Investment, Other Necessity, Other.");
+                if(userIn == null) {
+                    return;
+                }
+                if (checkValidCategory(userIn)) {
+                    JOptionPane.showMessageDialog(null, "Invalid input, please try again.");
+                } else {
+                    double result = listOfExpense.calculateAvgScore(userIn);
+                    JOptionPane.showMessageDialog(null, "Your average rating in " + userIn
+                            + " is " + result);
+                }
+            }
+        });
+    }
 
     //MODIFIES: this
     //EFFECTS: add functionality to add button to allow user adding new expense
