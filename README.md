@@ -49,3 +49,7 @@ with "Spending manage" on it put on the background. The icon of the application 
 - you can generate another action related to expenses and list of expenses, which is calculating monthly total,
 by clicking "view and manage expenses" button at the home page and then click on "Calculate Monthly Total" button. It
 will allow you to enter MM/YYYY format date, and it will give back the total expenses at the specified month.
+
+update:
+- You can rate the expense by clicking "View and manage expenses", select an expense, and then click "Rate Expense"
+- You can calculate the average rating for a specific category of purchases by clicking "View and manage expenses" and then click "Average rate" which will ask you to enter the category you are interested in
